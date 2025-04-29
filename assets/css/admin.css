@@ -1,0 +1,79 @@
+/* Admin styles for Fabric Management plugin */
+
+.wppluginfabric-admin .form-field {
+    margin-bottom: 20px;
+}
+
+.wppluginfabric-admin label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.wppluginfabric-admin input[type="text"],
+.wppluginfabric-admin select {
+    width: 100%;
+    max-width: 400px;
+}
+
+.wppluginfabric-admin .thumbnail-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.wppluginfabric-admin .thumbnail-preview img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.wppluginfabric-admin .no-image {
+    color: #888;
+    font-style: italic;
+}
+
+.wppluginfabric-admin .required {
+    color: #d63638;
+}
+
+.wppluginfabric-admin .button {
+    margin-right: 5px;
+}
+
+/* Brand management */
+.wppluginfabric-admin .brand-form-container {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccd0d4;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+
+/* Settings page */
+.wppluginfabric-admin .shortcode-info {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.wppluginfabric-admin .shortcode-info code {
+    background-color: #f0f0f1;
+    padding: 3px 5px;
+}
+
+.wppluginfabric-admin .shortcode-info ul {
+    margin-left: 20px;
+    list-style-type: disc;
+}
+
+/* Fabric list */
+.wppluginfabric-admin .wp-list-table .no-image {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+}

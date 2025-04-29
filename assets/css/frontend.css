@@ -1,0 +1,160 @@
+/* Frontend styles for Fabric Management plugin */
+
+.wppluginfabric-container {
+    margin: 20px 0;
+}
+
+/* Filters */
+.wppluginfabric-filters {
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+}
+
+.fabric-filter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: flex-end;
+}
+
+.filter-field {
+    flex: 1 1 200px;
+}
+
+.filter-field label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.filter-field select {
+    width: 100%;
+    padding: 8px;
+}
+
+.filter-field button {
+    padding: 8px 15px;
+    background-color: transparent;
+    color: #000;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.filter-field button:hover {
+    color: #000;
+}
+
+/* Fabric grid */
+.fabric-brand-section {
+    margin-bottom: 40px;
+}
+
+.brand-title {
+    font-size: 24px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+}
+
+.fabric-grid-items {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+}
+
+.fabric-item {
+    background-color: #fff;
+    transition: box-shadow 0.3s ease;
+}
+
+.fabric-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.fabric-thumbnail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.fabric-thumbnail img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+.fabric-title {
+    font-size: 16px !important;
+    margin: 10px 0;
+}
+
+.fabric-description {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.fabric-description p {
+    margin: 0 0 10px;
+}
+
+.fabric-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 12px;
+}
+
+.fabric-meta span {
+    background-color: #f0f0f0;
+    padding: 3px 8px;
+    border-radius: 3px;
+}
+
+.no-image {
+    width: 100%;
+    height: 100%;
+    background-color: #f9f9f9;
+    color: #888;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: italic;
+}
+
+.fabric-grid.loading {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.no-fabrics-found {
+    padding: 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+    border-radius: 4px;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 1200px) {
+    .fabric-grid-items {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .fabric-grid-items {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .fabric-grid-items {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .filter-field {
+        flex: 1 1 100%;
+    }
+}
