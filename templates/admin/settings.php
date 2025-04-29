@@ -7,7 +7,7 @@ if (!defined("ABSPATH")) {
 $fabric_types = get_option("wppluginfabric_fabric_types", array());
 $colors = get_option("wppluginfabric_colors", array());
 $patterns = get_option("wppluginfabric_patterns", array());
-$license_key = get_option("wppluginfabric_license_key", "");
+$license_key = get_option("wppluginfabric_license_key", "AZEX5Y7X5QTYLVRUQKMX");
 $license_status = get_option("wppluginfabric_license_status", "inactive");
 $license_info = get_option("wppluginfabric_license_info", array());
 $last_license_check = get_option("wppluginfabric_last_license_check", 0);

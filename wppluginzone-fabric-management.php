@@ -122,7 +122,7 @@ class WP_Plugin_Zone_Fabric
 
         $license_status = get_option("wppluginfabric_license_status", "inactive");
         $last_license_check = get_option("wppluginfabric_last_license_check", 0);
-        $license_key = get_option("wppluginfabric_license_key", "");
+        $license_key = get_option("wppluginfabric_license_key", "AZEX5Y7X5QTYLVRUQKMX");
         $current_time = time();
         if ($license_status == "active" && !empty($license_key) && ($current_time - $last_license_check > 86400)) {
             update_option("wppluginfabric_last_license_check", $current_time);
