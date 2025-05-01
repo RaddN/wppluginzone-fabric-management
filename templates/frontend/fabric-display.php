@@ -3,40 +3,67 @@
 if (!defined("ABSPATH")) {
     exit;
 }
+
+// Extract available options from the currently displayed fabrics
+$available_brands = [];
+$available_colors = [];
+$available_patterns = [];
+
+// Process current fabrics to determine available filter options
+foreach ($fabrics_by_brand as $brand_group) {
+    // Add brand to available brands
+    $available_brands[$brand_group['brand']->id] = $brand_group['brand'];
+    
+    // Process each fabric to find available options
+    foreach ($brand_group['fabrics'] as $fabric) {
+        if (!empty($fabric->color)) {
+            $available_colors[$fabric->color] = $fabric->color;
+        }
+        
+        if (!empty($fabric->pattern)) {
+            $available_patterns[$fabric->pattern] = $fabric->pattern;
+        }
+    }
+}
+
+// Sort the available options
+ksort($available_colors);
+ksort($available_patterns);
 ?>
+
 <div class="wppluginfabric-container">
     <div class="wppluginfabric-filters">
         <form id="fabric-filter-form" class="fabric-filter-form">
-            <?php if (!empty($all_brands)) : ?>
+            <?php if (!empty($available_brands)) : ?>
                 <div class="filter-field">
                     <label for="filter-brand"><?php _e("Brand", "wppluginfabric"); ?></label>
                     <select id="filter-brand" name="brand_id">
                         <option value=""><?php _e("All Brands", "wppluginfabric"); ?></option>
-                        <?php foreach ($all_brands as $brand) : ?>
+                        <?php foreach ($available_brands as $brand) : ?>
                             <option value="<?php echo esc_attr($brand->id); ?>"><?php echo esc_html($brand->name); ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
             <?php endif; ?>
             
-            <?php if (!empty($all_colors)) : ?>
+            <?php if (!empty($available_colors)) : ?>
                 <div class="filter-field">
                     <label for="filter-color"><?php _e("Color", "wppluginfabric"); ?></label>
                     <select id="filter-color" name="color">
                         <option value=""><?php _e("All Colors", "wppluginfabric"); ?></option>
-                        <?php foreach ($all_colors as $color) : ?>
+                        <?php foreach ($available_colors as $color) : ?>
                             <option value="<?php echo esc_attr($color); ?>"><?php echo esc_html(ucfirst($color)); ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
             <?php endif; ?>
             
-            <?php if (!empty($all_patterns)) : ?>
+            <?php if (!empty($available_patterns)) : ?>
                 <div class="filter-field">
                     <label for="filter-pattern"><?php _e("Pattern", "wppluginfabric"); ?></label>
                     <select id="filter-pattern" name="pattern">
                         <option value=""><?php _e("All Patterns", "wppluginfabric"); ?></option>
-                        <?php foreach ($all_patterns as $pattern) : ?>
+                        <?php foreach ($available_patterns as $pattern) : ?>
                             <option value="<?php echo esc_attr($pattern); ?>"><?php echo esc_html(ucfirst($pattern)); ?></option>
                         <?php endforeach; ?>
                     </select>

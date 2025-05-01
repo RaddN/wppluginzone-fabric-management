@@ -3,7 +3,7 @@
 /**
  * Plugin Name: wppluginzone Fabric Management
  * Description: A WordPress plugin to manage fabric inventory with filtering options
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: WP Plugin Zone
  * Text Domain: wppluginfabric
  */
@@ -36,7 +36,7 @@ class WP_Plugin_Zone_Fabric
      */
     private function define_constants()
     {
-        define('WPPLUGINFABRIC_VERSION', '1.0.0');
+        define('WPPLUGINFABRIC_VERSION', '1.0.1');
         define('WPPLUGINFABRIC_PLUGIN_DIR', plugin_dir_path(__FILE__));
         define('WPPLUGINFABRIC_PLUGIN_URL', plugin_dir_url(__FILE__));
     }
@@ -127,9 +127,9 @@ class WP_Plugin_Zone_Fabric
         if ($license_status == "active" && !empty($license_key) && ($current_time - $last_license_check > 86400)) {
             update_option("wppluginfabric_last_license_check", $current_time);
         }
-        if ($license_status == "active" && !empty($license_key)) {
-            // Register scripts and styles
-            add_action('admin_enqueue_scripts', array($this, 'register_scripts'));
+        // Register scripts and styles
+        add_action('admin_enqueue_scripts', array($this, 'register_scripts'));
+        if ($license_status == "active" && !empty($license_key)) {            
             add_action('wp_enqueue_scripts', array($this, 'register_frontend_scripts'));
             // Register shortcode
             add_shortcode('wppluginzonefab', array($this, 'fabric_shortcode'));
@@ -745,24 +745,6 @@ class WP_Plugin_Zone_Fabric
             'fabric_type' => $atts['fabrictype'],
             'brand_id' => 0
         );
-
-        // if (!empty($atts['brand'])) {
-        //     global $wpdb;
-        //     $table_brands = $wpdb->prefix . 'wppluginfabric_brands';
-        //     $brand = $wpdb->get_row($wpdb->prepare("SELECT id FROM $table_brands WHERE name = %s", $atts['brand']));
-
-        //     if ($brand) {
-        //         $args['brand_id'] = $brand->id;
-        //     }
-        // }
-
-        // if (!empty($atts['color'])) {
-        //     $args['color'] = $atts['color'];
-        // }
-
-        // if (!empty($atts['pattern'])) {
-        //     $args['pattern'] = $atts['pattern'];
-        // }
 
         $fabrics_by_brand = $this->get_fabrics_by_brand($args);
         $all_brands = $this->get_brands();
